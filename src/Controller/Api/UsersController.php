@@ -19,11 +19,18 @@ class UsersController extends AppController
 
     public function index()
     {
+
         $this->paginate = [
             'contain' => ['Roles'],
             'conditions' => [
                 'Users.role_id' => self::USER_ROLE_ID
-            ]
+            ],
+            'order' => [
+                'Users.id' => 'DESC'
+            ],
+            'limit' => $this->Users
+                ->find('all')
+                ->count()
         ];
 
         $users = $this->paginate($this->Users);
