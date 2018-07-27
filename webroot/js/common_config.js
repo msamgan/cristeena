@@ -8,6 +8,7 @@ requirejs.config({
         swal: 'https://unpkg.com/sweetalert/dist/sweetalert.min',
         datatables: 'https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min',
         methods: 'methods',
+        constants: 'constants'
     },
     shim: {
         bootstrap : {
