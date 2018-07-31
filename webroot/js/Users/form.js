@@ -48,6 +48,7 @@ define([
                 if (response['status']) {
                     $('#email').val(response['user']['email']);
                     $('#name').val(response['user']['name']);
+                    $('#preview_image').attr('src', '/img/profile/' + response['user']['profile_image']);
                 } else {
                     methods.notify(response['title'], response['message'], 'error');
                     setTimeout(function () {
@@ -57,4 +58,22 @@ define([
             }
         );
     }
+
+    /**
+     * preview profile image.
+     */
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                $('#preview_image').attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#profile_image").change(function() {
+        readURL(this);
+    });
 });

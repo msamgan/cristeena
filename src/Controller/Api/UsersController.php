@@ -98,6 +98,16 @@ class UsersController extends AppController
             }
 
             $request['slug'] = $this->Methods->slug($request['name']);
+
+            if (!empty($request['profile_image'])) {
+                $request['profile_image'] = $this->Methods->uploadImage(
+                    'img/profile',
+                    $request['profile_image']
+                );
+            } else {
+                $request['profile_image'] = 'profile.jpeg';
+            }
+
             $user = $this->Users->patchEntity($user, $request);
             if ($this->Users->save($user)) {
                 $response = [
@@ -148,7 +158,12 @@ class UsersController extends AppController
                 }
             }
 
-
+            if (!empty($request['profile_image'])) {
+                $request['profile_image'] = $this->Methods->uploadImage(
+                    'img/profile',
+                    $request['profile_image']
+                );
+            }
 
             $user = $this->Users->patchEntity($user, $request);
             if ($this->Users->save($user)) {
