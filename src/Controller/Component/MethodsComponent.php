@@ -35,6 +35,5 @@ class MethodsComponent extends Component
         }
 
         return strtolower(Inflector::slug($string))."-".@end(explode('-', $oldSlug));
-
     }
 }

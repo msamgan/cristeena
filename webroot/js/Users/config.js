@@ -7,8 +7,7 @@ requirejs(['/js/common_config.js'], function () {
         baseUrl: '/js/',
         paths: {
             index: 'Users/index',
-            add: 'Users/add',
-            edit: 'Users/edit',
+            form: 'Users/form',
             profile: 'Users/profile',
             settings: 'Users/settings'
         },
@@ -20,8 +19,7 @@ requirejs(['/js/common_config.js'], function () {
         'bootstrap',
         'klorofil',
         'index',
-        'add',
-        'edit',
+        'form',
         'profile',
         'settings'
     ],function ($, methods) {
