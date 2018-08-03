@@ -31,7 +31,7 @@ define([
         if (response['status']) {
             methods.notify(response['title'], response['message'], 'success');
             setTimeout(function () {
-                window.location.href = '/admin/users';
+                window.location.href = '/' +  $("meta[name=role]").data('slug') +'/' + $("meta[name=module]").attr('content');
             }, 3000)
         } else {
             methods.notify(response['title'], response['message'], 'error');

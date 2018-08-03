@@ -44,7 +44,7 @@ class UsersController extends AppController
         $count = 1;
         foreach ($users as $user) {
             $user->count = $count;
-            $user->actions = $user->actions;
+            $user->actions = $user->admin_user_actions;
             $count++;
         }
 
@@ -75,7 +75,7 @@ class UsersController extends AppController
         $count = 1;
         foreach ($users as $user) {
             $user->count = $count;
-            $user->actions = $user->actions;
+            $user->actions = $user->director_admin_actions;
             $count++;
         }
 

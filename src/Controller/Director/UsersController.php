@@ -20,14 +20,19 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        if ($this->request->params['prefix'] == 'director' && $this->authUser->role->name != 'Director') {
-            $this->Flash->error(_('You are not allowed to access this URL'));
-            return $this->redirect('/dashboard');
+        if ($this->Auth->user()) {
+            if ($this->request->params['prefix'] == 'director' && $this->authUser->role->name != 'Director') {
+                $this->Flash->error(_('You are not allowed to access this URL'));
+
+                return $this->redirect('/dashboard');
+            } else {
+                $module = 'users';
+                $this->viewBuilder()->setLayout($module);
+                $this->set(compact('module'));
+                $this->set('activity', 'index');
+            }
         } else {
-            $module = 'users';
-            $this->viewBuilder()->setLayout($module);
-            $this->set(compact('module'));
-            $this->set('activity', 'index');
+            return $this->redirect('/login');
         }
     }
 

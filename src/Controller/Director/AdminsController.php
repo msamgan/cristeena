@@ -20,13 +20,18 @@ class AdminsController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        if ($this->request->params['prefix'] == 'director' && $this->authUser->role->name != 'Director') {
-            $this->Flash->error(_('You are not allowed to access this URL'));
-            return $this->redirect('/dashboard');
+        if ($this->Auth->user()) {
+            if ($this->request->params['prefix'] == 'director' && $this->authUser->role->name != 'Director') {
+                $this->Flash->error(_('You are not allowed to access this URL'));
+
+                return $this->redirect('/dashboard');
+            } else {
+                $this->viewBuilder()->setLayout('users');
+                $this->set('module', 'admins');
+                $this->set('activity', 'index');
+            }
         } else {
-            $this->viewBuilder()->setLayout('users');
-            $this->set('module', 'admins');
-            $this->set('activity', 'index');
+            return $this->redirect('/login');
         }
     }
 
