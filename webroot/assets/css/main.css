@@ -1769,3 +1769,12 @@ ul.activity-timeline > li {
 input[type=search] {
   -webkit-appearance: button;
 }
+
+/**
+navigation profile image
+ */
+#nav-user-profile-image {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}

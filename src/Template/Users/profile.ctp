@@ -11,7 +11,7 @@
                         <h3 class="panel-title">Profile</h3>
                     </div>
                     <div class="panel-body">
-                        <form id="profile-form" data-slug="<?= $authUser->slug ?>" >
+                        <form id="profile-form" method="post" action="/api/users/edit/<?= $authUser->slug ?>" data-slug="<?= $authUser->slug ?>" >
                             <div class="row">
                                 <div class="col-md-6">
                                     <div>
@@ -23,6 +23,17 @@
                                         <label for="name" >Full Name:</label>
                                         <input id="name" type="text" class="form-control" placeholder="user full name" name="name" required>
                                         <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="col-md-6" >
+                                        <img src="/img/profile/profile.jpg" alt="Avatar" id="preview_image" class="img-circle pull-left avatar" style="width: 150px; height: 150px;">
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <label for="profile_image" >Profile Image:</label>
+                                        <input id="profile_image" type="file" class="form-control" placeholder="Profile image" name="profile_image">
                                     </div>
                                 </div>
                             </div>

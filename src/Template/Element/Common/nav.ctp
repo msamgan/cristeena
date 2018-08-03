@@ -15,7 +15,7 @@
         <div id="navbar-menu">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><!--<img src="assets/img/user.png" class="img-circle" alt="Avatar">--> <span id="nav-user-name"><?= $authUser->name ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/img/profile/<?= $authUser->profile_image ?>" class="img-circle" id="nav-user-profile-image" alt="Avatar"><span id="nav-user-name"><?= $authUser->name ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="/profile"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                         <li><a href="/settings"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>

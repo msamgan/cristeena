@@ -1,7 +1,8 @@
 define([
     'jquery',
     'jq_validations',
-    'methods'
+    'methods',
+    'jq_form'
 ], function ($, validation, methods) {
     let profile_form = $('#profile-form');
 
@@ -11,6 +12,7 @@ define([
             if (response['status']) {
                 $('#email-label').html(response['user']['email']);
                 $('#name').val(response['user']['name']);
+                $('#preview_image').attr('src', '/img/profile/' + response['user']['profile_image']);
             } else {
                 methods.notify(response['title'], response['message'], 'error');
                 setTimeout(function () {
@@ -28,21 +30,18 @@ define([
             },
             unhighlight: function(element, errorClass, validClass) {
                 $(element).parent().removeClass(errorClass).addClass(validClass);
-            },
-            submitHandler: function (form) {
-                let action_url = '/api/users/edit/' + profile_form.data('slug');
-                $.post( action_url, profile_form.serialize() ).done(function (response) {
-                    response = methods.toArray(response);
-                    if (response['status']) {
-                        methods.notify(response['title'], response['message'], 'success');
-                        profile_form.attr('data-slug', response['user']['slug']);
-                        $('#nav-user-name').html($('#name').val());
-                    } else {
-                        methods.notify(response['title'], response['message'], 'error');
-                    }
-                });
+            }
+        });
 
-                return false; // required to block normal submit since you used ajax
+        profile_form.ajaxForm(function(response) {
+            response = methods.toArray(response);
+            if (response['status']) {
+                methods.notify(response['title'], response['message'], 'success');
+                profile_form.attr('data-slug', response['user']['slug']);
+                $('#nav-user-name').html($('#name').val());
+                $('#nav-user-profile-image').attr('src', '/img/profile/' + response['user']['profile_image']);
+            } else {
+                methods.notify(response['title'], response['message'], 'error');
             }
         });
     }
