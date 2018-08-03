@@ -22,6 +22,14 @@ class UsersSeed extends AbstractSeed
         $data = [
             [
                 'role_id' => 1,
+                'name' => 'Default Director',
+                'slug' => 'default-director'."-".time(),
+                'email' => 'director@project.com',
+                'password' => $hasher->hash('123456'),
+                'created' => date('Y-m-d H:i:s')
+            ],
+            [
+                'role_id' => 2,
                 'name' => 'Default Admin',
                 'slug' => 'default-admin'."-".time(),
                 'email' => 'admin@project.com',
@@ -29,7 +37,7 @@ class UsersSeed extends AbstractSeed
                 'created' => date('Y-m-d H:i:s')
             ],
             [
-                'role_id' => 2,
+                'role_id' => 3,
                 'name' => 'Default User',
                 'slug' => 'default-user'."-".time(),
                 'email' => 'user@project.com',

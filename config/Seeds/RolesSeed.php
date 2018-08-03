@@ -20,6 +20,11 @@ class RolesSeed extends AbstractSeed
     {
         $data = [
             [
+                'name' => 'Director',
+                'slug' => 'director',
+                'created' => date('Y-m-d H:i:s')
+            ],
+            [
                 'name' => 'Admin',
                 'slug' => 'admin',
                 'created' => date('Y-m-d H:i:s')

@@ -37,6 +37,11 @@ class CreateUsers extends AbstractMigration
             'default' => null,
             'null' => false,
         ]);
+        $table->addColumn('profile_image', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => true,
+        ]);
         $table->addColumn('created', 'timestamp', [
             'default' => CURRENT_TIMESTAMP,
             'null' => true,
