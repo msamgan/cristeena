@@ -22,6 +22,7 @@ class UsersController extends AppController
         parent::beforeFilter($event);
         if ($this->request->params['prefix'] == 'admin' && $this->authUser->role->name != 'Admin') {
             $this->Flash->error(_('You are not allowed to access this URL'));
+
             return $this->redirect('/dashboard');
         } else {
             $module = 'users';
@@ -41,7 +42,7 @@ class UsersController extends AppController
     /**
      * Add method
      *
-     * @return \Cake\Http\Response|null renders view.
+     * @return \Cake\Http\Response|void renders view.
      */
     public function add()
     {

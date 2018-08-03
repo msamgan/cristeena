@@ -84,7 +84,6 @@ class AppController extends Controller
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-
         if ($this->Auth->User()) {
             $this->loadModel('Users');
             $this->authUser = $this->Users->get($this->Auth->User('id'), [
