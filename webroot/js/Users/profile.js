@@ -1,7 +1,8 @@
 define([
     'jquery',
+    'jq_validations',
     'methods'
-], function ($, methods) {
+], function ($, validation, methods) {
     let profile_form = $('#profile-form');
 
     if ($("meta[name=module]").attr('content') === 'profile') {

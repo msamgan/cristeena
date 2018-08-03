@@ -1,7 +1,8 @@
 define([
     'jquery',
+    'jq_validations',
     'methods'
-], function ($, methods) {
+], function ($, validation, methods) {
     let change_password_form = $('#change-password-form');
 
     const action_url = '/api/users/change-password/';
