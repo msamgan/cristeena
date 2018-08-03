@@ -33,8 +33,13 @@
     <div class="right">
         <div class="overlay"></div>
         <div class="content text">
-            <h1 class="heading">Billing System </h1>
-            <p>for Microsoft Cloud Service Provider</p>
+            <h1 class="heading">CakePHP & Require Js</h1>
+            <p>Dashboard template with CakePHP 3.x and Require Js, Multiple roles.</p>
+            <p>Roles: Director, Admin, User</p>
+            <br>
+            <br>
+            <p>Demo login email: role@project.com (replace role with the above roles)</p>
+            <p>Demo login password: 123456</p>
         </div>
     </div>
     <div class="clearfix"></div>
