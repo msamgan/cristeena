@@ -6,6 +6,7 @@ use Cake\Event\Event;
 
 class UsersController extends AppController
 {
+    const ADMIN_ROLE_ID = 2;
     const USER_ROLE_ID = 3;
 
     /**
@@ -30,6 +31,37 @@ class UsersController extends AppController
             'contain' => ['Roles'],
             'conditions' => [
                 'Users.role_id' => self::USER_ROLE_ID
+            ],
+            'order' => [
+                'Users.id' => 'DESC'
+            ],
+            'limit' => $this->Users
+                ->find('all')
+                ->count()
+        ];
+
+        $users = $this->paginate($this->Users);
+        $count = 1;
+        foreach ($users as $user) {
+            $user->count = $count;
+            $user->actions = $user->actions;
+            $count++;
+        }
+
+        $response['data'] = $users;
+
+        $this->_throw($response);
+    }
+
+    /**
+     *
+     */
+    public function admins()
+    {
+        $this->paginate = [
+            'contain' => ['Roles'],
+            'conditions' => [
+                'Users.role_id' => self::ADMIN_ROLE_ID
             ],
             'order' => [
                 'Users.id' => 'DESC'

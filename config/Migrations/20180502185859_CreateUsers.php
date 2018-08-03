@@ -14,7 +14,7 @@ class CreateUsers extends AbstractMigration
     {
         $table = $this->table('users');
         $table->addColumn('role_id', 'integer', [
-            'default' => 2,
+            'default' => 3,
             'limit' => 11,
             'null' => false,
         ]);
