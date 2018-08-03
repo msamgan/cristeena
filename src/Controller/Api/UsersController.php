@@ -8,6 +8,10 @@ class UsersController extends AppController
 {
     const USER_ROLE_ID = 2;
 
+    /**
+     * @param Event $event
+     * @return \Cake\Http\Response|null|void
+     */
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -17,9 +21,11 @@ class UsersController extends AppController
         $this->autoRender = false;
     }
 
+    /**
+     *
+     */
     public function index()
     {
-
         $this->paginate = [
             'contain' => ['Roles'],
             'conditions' => [

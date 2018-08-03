@@ -16,11 +16,12 @@ class UsersController extends AppController
 
     /**
      * @param Event $event
+     * @return \Cake\Http\Response|null
      */
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->viewBuilder()->layout('users');
+        $this->viewBuilder()->setLayout('users');
 
         if ($this->request->params['prefix'] == 'admin' && $this->authUser->role->name != 'Admin') {
             $this->Flash->error(_('You are not allowed to access this URL'));
@@ -33,18 +34,14 @@ class UsersController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
-    public function index()
-    {
-    }
+    public function index() {}
 
     /**
      * Add method
      *
      * @return \Cake\Http\Response|null renders view.
      */
-    public function add()
-    {
-    }
+    public function add() {}
 
     /**
      * Edit method
@@ -60,6 +57,6 @@ class UsersController extends AppController
 
     public function dashboard()
     {
-        $this->viewBuilder()->layout('dashboard');
+        $this->viewBuilder()->setLayout('dashboard');
     }
 }
