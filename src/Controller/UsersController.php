@@ -13,7 +13,6 @@ use Cake\Event\Event;
  */
 class UsersController extends AppController
 {
-
     /**
      * @param Event $event
      */
