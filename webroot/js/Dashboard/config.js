@@ -20,7 +20,7 @@ requirejs([
     'klorofil'
 ],function ($) {
     console.log('all Dashboard dependencies injected.');
-    let module = 'dashboard';
+    let module = $("meta[name=module]").attr('content');
 
     let dashboard_menu = $('#'+ module +'-menu');
     dashboard_menu.removeClass('collapsed')

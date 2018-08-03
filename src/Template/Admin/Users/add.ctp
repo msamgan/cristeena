@@ -11,7 +11,7 @@
                         <h3 class="panel-title">Add User</h3>
                     </div>
                     <div class="panel-body">
-                        <form id="user-form" action="/api/users/add" method="post" data-role="add" >
+                        <form id="user-form" action="/api/users/add" method="post" data-activity="add" >
                             <?php include('form.ctp') ?>
                         </form>
                     </div>

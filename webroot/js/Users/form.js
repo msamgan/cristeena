@@ -42,7 +42,7 @@ define([
     /**
      * fill edit form data.
      */
-    if (user_form.data('role') == 'edit') {
+    if (user_form.data('activity') == 'edit') {
         $.get('/api/users/view/' + user_form.data('slug'),function (response) {
                 response = methods.toArray(response);
                 if (response['status']) {

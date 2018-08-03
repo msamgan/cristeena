@@ -22,24 +22,17 @@ requirejs(['/js/common_config.js'], function () {
         'form',
         'profile',
         'settings'
-    ],function ($, methods) {
+    ],function ($) {
         console.log('all Users dependencies injected.');
-        let module = 'users';
-        let url_segments = methods.url_segments();
+        let meta = $("meta[name=module]");
+        let module = meta.attr('content');
 
-        if (url_segments.length == 1 && (url_segments[0] == 'profile' || url_segments[0] == 'settings')) {
+        if (module === 'profile' || module ==='settings') {
             return false;
         }
 
-        let user_menu = $('#'+ module +'-menu');
-        user_menu.removeClass('collapsed');
-        user_menu.addClass('active');
+        $('#'+ module +'-menu').removeClass('collapsed').addClass('active');
         $('#'+ module +'-submenu').addClass('in');
-
-        if (url_segments.length > 2) {
-            $('#users-submenu-' + url_segments[2]).addClass('active');
-        } else {
-            $('#'+ module +'-submenu-index').addClass('active');
-        }
+        $('#'+ module +'-submenu-' + meta.data('activity')).addClass('active');
     });
 });

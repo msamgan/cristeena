@@ -21,11 +21,14 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->viewBuilder()->setLayout('users');
-
         if ($this->request->params['prefix'] == 'admin' && $this->authUser->role->name != 'Admin') {
             $this->Flash->error(_('You are not allowed to access this URL'));
             return $this->redirect('/dashboard');
+        } else {
+            $module = 'users';
+            $this->viewBuilder()->setLayout($module);
+            $this->set(compact('module'));
+            $this->set('activity', 'index');
         }
     }
 
@@ -41,22 +44,32 @@ class UsersController extends AppController
      *
      * @return \Cake\Http\Response|null renders view.
      */
-    public function add() {}
+    public function add()
+    {
+        $this->set('activity', 'add');
+    }
 
     /**
      * Edit method
      *
      * @param string|null $slug User slug.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Http\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($slug = null)
     {
         $this->set(compact('slug'));
+        $this->set('activity', 'edit');
     }
 
+    /**
+     *
+     */
     public function dashboard()
     {
-        $this->viewBuilder()->setLayout('dashboard');
+        $module = 'dashboard';
+        $this->viewBuilder()->setLayout($module);
+        $this->set(compact('module'));
+        $this->set('activity', 'index');
     }
 }

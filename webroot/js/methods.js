@@ -16,10 +16,6 @@ define([
             button: true
         });
     };
-    
-    methods.url_segments = function () {
-        return (window.location.pathname).substr(1).split('/');
-    };
 
     return methods;
 });

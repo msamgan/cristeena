@@ -20,37 +20,8 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->viewBuilder()->layout('users');
-    }
-
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|void
-     */
-    public function index()
-    {
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null renders view.
-     */
-    public function add()
-    {
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $slug User slug.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($slug = null)
-    {
-        $this->set(compact('slug'));
+        $this->viewBuilder()->setLayout('users');
+        $this->set('activity', 'index');
     }
 
     /**
@@ -58,7 +29,7 @@ class UsersController extends AppController
      */
     public function profile()
     {
-
+        $this->set('module', 'profile');
     }
 
     /**
@@ -66,7 +37,7 @@ class UsersController extends AppController
      */
     public function settings()
     {
-
+        $this->set('module', 'settings');
     }
 
     /**
@@ -77,7 +48,7 @@ class UsersController extends AppController
         if ($this->Auth->User()) {
             return $this->redirect('/dashboard');
         }
-        $this->viewBuilder()->layout('auth');
+        $this->viewBuilder()->setLayout('auth');
     }
 
     /**
@@ -86,14 +57,19 @@ class UsersController extends AppController
     public function logout()
     {
         $this->Flash->success(_('You are now logged out.'));
+
         return $this->redirect($this->Auth->logout());
     }
 
     public function dashboard()
     {
-        $this->viewBuilder()->layout('dashboard');
         if ($this->authUser->role->name == 'Admin') {
             return $this->redirect('/admin/dashboard');
         }
+
+        $module = 'dashboard';
+        $this->viewBuilder()->setLayout($module);
+        $this->set(compact('module'));
+        $this->set('activity', 'index');
     }
 }

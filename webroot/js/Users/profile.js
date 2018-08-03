@@ -4,7 +4,7 @@ define([
 ], function ($, methods) {
     let profile_form = $('#profile-form');
 
-    if (methods.url_segments()[0] == 'profile') {
+    if ($("meta[name=module]").attr('content') === 'profile') {
         $.get('/api/users/view/' + profile_form.data('slug'), function (response) {
             response = methods.toArray(response);
             if (response['status']) {
@@ -16,7 +16,7 @@ define([
                     window.location.href = '/users';
                 }, 3000);
             }
-        })
+        });
 
         profile_form.validate({
             ignore: ":hidden",
@@ -40,6 +40,7 @@ define([
                         methods.notify(response['title'], response['message'], 'error');
                     }
                 });
+
                 return false; // required to block normal submit since you used ajax
             }
         });

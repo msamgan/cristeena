@@ -11,7 +11,7 @@
                         <h3 class="panel-title">Edit User</h3>
                     </div>
                     <div class="panel-body">
-                        <form id="user-form" method="post" action="/api/users/edit/<?= $slug ?>" data-slug="<?= $slug ?>" data-role="edit"  >
+                        <form id="user-form" method="post" action="/api/users/edit/<?= $slug ?>" data-slug="<?= $slug ?>" data-activity="edit"  >
                             <?php include('form.ctp') ?>
                         </form>
                     </div>
