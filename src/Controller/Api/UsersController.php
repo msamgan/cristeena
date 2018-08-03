@@ -6,7 +6,7 @@ use Cake\Event\Event;
 
 class UsersController extends AppController
 {
-    const USER_ROLE_ID = 2;
+    const USER_ROLE_ID = 3;
 
     /**
      * @param Event $event

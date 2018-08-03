@@ -66,6 +66,10 @@ class UsersController extends AppController
             return $this->redirect('/admin/dashboard');
         }
 
+        if ($this->authUser->role->name == 'Director') {
+            return $this->redirect('/director/dashboard');
+        }
+
         $module = 'dashboard';
         $this->viewBuilder()->setLayout($module);
         $this->set(compact('module'));

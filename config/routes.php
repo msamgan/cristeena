@@ -37,6 +37,11 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 
+Router::prefix('director', function ($routes) {
+    $routes->connect('/dashboard', ['controller' => 'users', 'action' => 'dashboard']);
+    $routes->fallbacks(DashedRoute::class);
+});
+
 Router::prefix('admin', function ($routes) {
     $routes->connect('/dashboard', ['controller' => 'users', 'action' => 'dashboard']);
     $routes->fallbacks(DashedRoute::class);
