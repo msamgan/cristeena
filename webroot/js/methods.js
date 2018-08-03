@@ -17,5 +17,17 @@ define([
         });
     };
 
+    methods.reload = function (delay) {
+        setTimeout(function () {
+            window.location.reload(true);
+        }, (delay*1000))
+    };
+
+    methods.redirect = function (delay, path) {
+        setTimeout(function () {
+            window.location.href = path;
+        }, (delay*1000))
+    };
+
     return methods;
 });

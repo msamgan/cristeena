@@ -30,9 +30,10 @@ define([
         response = methods.toArray(response);
         if (response['status']) {
             methods.notify(response['title'], response['message'], 'success');
-            setTimeout(function () {
-                window.location.href = '/' +  $("meta[name=role]").data('slug') +'/' + $("meta[name=module]").attr('content');
-            }, 3000)
+            methods.redirect(
+                2,
+                '/' +  $("meta[name=role]").data('slug') +'/' + $("meta[name=module]").attr('content')
+            );
         } else {
             methods.notify(response['title'], response['message'], 'error');
         }
@@ -51,9 +52,10 @@ define([
                     $('#preview_image').attr('src', '/img/profile/' + response['user']['profile_image']);
                 } else {
                     methods.notify(response['title'], response['message'], 'error');
-                    setTimeout(function () {
-                        window.location.href = '/admin/users';
-                    }, 3000)
+                    methods.redirect(
+                        2,
+                        '/' +  $("meta[name=role]").data('slug') +'/' + $("meta[name=module]").attr('content')
+                    );
                 }
             }
         );

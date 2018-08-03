@@ -1,7 +1,7 @@
 <div class="main-content">
     <div class="container-fluid">
         <h3 class="page-title">User Details
-            <a href="/admin/users" class="btn btn-info btn-xs pull-right" title="Back to users list"><i class="lnr lnr-arrow-left"></i></a>
+            <a href="/director/users" class="btn btn-info btn-xs pull-right" title="Back to users list"><i class="lnr lnr-arrow-left"></i></a>
         </h3>
         <div class="row">
             <div class="col-md-12">

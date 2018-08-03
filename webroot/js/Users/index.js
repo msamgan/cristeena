@@ -20,7 +20,7 @@ define([
                             response = methods.toArray(response);
                             if (response['status']) {
                                 methods.notify(response['title'], response['message'], 'success');
-                                reload(2000);
+                                methods.reload(2);
                             } else {
                                 methods.notify(response['title'], response['message'], 'error');
                             }
@@ -56,7 +56,7 @@ define([
                             response = methods.toArray(response);
                             if (response['status']) {
                                 methods.notify(response['title'], response['message'], 'success');
-                                reload(2000);
+                                methods.reload(2);
                             } else {
                                 methods.notify(response['title'], response['message'], 'error');
                             }
@@ -74,10 +74,4 @@ define([
             { "data": "actions" },
         ]
     });
-
-    function reload(delay) {
-        setTimeout(function () {
-            window.location.reload(true);
-        }, delay)
-    }
 });

@@ -71,6 +71,14 @@ class User extends Entity
     /**
      * @return string
      */
+    protected function _getDirectorUserActions()
+    {
+        return $this->_directorEditUser(). $this->_delete();
+    }
+
+    /**
+     * @return string
+     */
     protected function _getAdminUserActions()
     {
         return $this->_adminEdit() . $this->_delete();
@@ -90,6 +98,14 @@ class User extends Entity
     private function _directorEditAdmin()
     {
         return '<a class="btn-info btn-xs" href="/director/admins/edit/'. $this->_properties['slug'] .'" title="Edit user" ><i class="lnr lnr-pencil" ></i></a>';
+    }
+
+    /**
+     * @return string
+     */
+    private function _directorEditUser()
+    {
+        return '<a class="btn-info btn-xs" href="/director/users/edit/'. $this->_properties['slug'] .'" title="Edit user" ><i class="lnr lnr-pencil" ></i></a>';
     }
 
     /**

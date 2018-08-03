@@ -44,7 +44,9 @@ class UsersController extends AppController
         $count = 1;
         foreach ($users as $user) {
             $user->count = $count;
-            $user->actions = $user->admin_user_actions;
+            $user->actions = ($this->authUser->role->name === 'Director')
+                ? $user->director_user_actions
+                : $user->admin_user_actions;
             $count++;
         }
 
