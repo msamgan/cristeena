@@ -88,4 +88,4 @@ define('CAKE', CORE_PATH . 'src' . DS);
 /**
  * Custom constants
  */
-define('SITE_TITLE', 'Billing System');
+define('SITE_TITLE', 'CakePHP and Require JS Dashboard Template');
