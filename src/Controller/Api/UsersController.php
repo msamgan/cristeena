@@ -286,20 +286,29 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
+
         $this->request->allowMethod(['get']);
-        $user = $this->Users->get($id);
-        if ($this->Users->delete($user)) {
-            $response = [
-                'status' => true,
-                'title' => _('The user has been deleted.'),
-                'message' => _('The user has been deleted from the system.')
-            ];
-        } else {
-            $response = [
+        try {
+            $user = $this->Users->get($id);
+            if ($this->Users->delete($user)) {
+                $response = [
+                    'status' => true,
+                    'title' => _('The user has been deleted.'),
+                    'message' => _('The user has been deleted from the system.')
+                ];
+            } else {
+                $response = [
+                    'status' => false,
+                    'title' => _('The user has not been deleted.'),
+                    'message' => _('The user could not be deleted. Please, try again.')
+                ];
+            }
+        } catch (\Exception $e) {
+            $this->_throw([
                 'status' => false,
-                'title' => _('The user has not been deleted.'),
-                'message' => _('The user could not be deleted. Please, try again.')
-            ];
+                'title' => _('The user can not been deleted.'),
+                'message' => _('user is in use, can not delete user.')
+            ]);
         }
 
         $this->_throw($response);

@@ -17,7 +17,11 @@ class CreateUsers extends AbstractMigration
             'default' => 3,
             'limit' => 11,
             'null' => false,
-        ]);
+        ])->addIndex(['role_id'])->addForeignKey(
+            'role_id',
+            'roles',
+            'id'
+        );
         $table->addColumn('name', 'string', [
             'default' => null,
             'limit' => 255,
