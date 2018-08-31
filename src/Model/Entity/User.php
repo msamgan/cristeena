@@ -19,7 +19,6 @@ use Cake\Auth\DefaultPasswordHasher;
  */
 class User extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

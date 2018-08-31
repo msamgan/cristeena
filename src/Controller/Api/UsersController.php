@@ -4,6 +4,10 @@ namespace App\Controller\Api;
 use App\Controller\AppController;
 use Cake\Event\Event;
 
+/**
+ * Class UsersController
+ * @package App\Controller\Api
+ */
 class UsersController extends AppController
 {
     /**
