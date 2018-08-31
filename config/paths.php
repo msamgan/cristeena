@@ -88,4 +88,12 @@ define('CAKE', CORE_PATH . 'src' . DS);
 /**
  * Custom constants
  */
-define('SITE_TITLE', 'CakePHP and Require JS Dashboard Template');
+define(
+    'SITE_TITLE',
+    'CakePHP and Require JS Dashboard Template'
+);
+
+define(
+    'PROFILE_PATH',
+    '/img/profile/'
+);
