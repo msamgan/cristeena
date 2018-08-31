@@ -11,17 +11,7 @@
                         <h3 class="panel-title">Users</h3>
                     </div>
                     <div class="panel-body">
-                        <table class="table table-hover" id="user-list-table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+                        <?= $this->element('User/table') ?>
                     </div>
                 </div>
                 <!-- END TABLE HOVER -->
