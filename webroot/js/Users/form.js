@@ -29,13 +29,21 @@ define([
     user_form.ajaxForm(function(response) {
         response = methods.toArray(response);
         if (response['status']) {
-            methods.notify(response['title'], response['message'], 'success');
+            methods.notify(
+                response['title'],
+                response['message'],
+                'success'
+            );
             methods.redirect(
                 2,
-                '/' +  $("meta[name=role]").data('slug') +'/' + $("meta[name=module]").attr('content')
+                '/' + $("meta[name=role]").data('slug') + '/' + $("meta[name=module]").attr('content')
             );
         } else {
-            methods.notify(response['title'], response['message'], 'error');
+            methods.notify(
+                response['title'],
+                response['message'],
+                'error'
+            );
         }
     });
 
@@ -43,15 +51,21 @@ define([
     /**
      * fill edit form data.
      */
-    if (user_form.data('activity') == 'edit') {
+    if (user_form.data('activity') === 'edit') {
         $.get('/api/users/view/' + user_form.data('slug'),function (response) {
                 response = methods.toArray(response);
                 if (response['status']) {
                     $('#email').val(response['user']['email']);
                     $('#name').val(response['user']['name']);
-                    $('#preview_image').attr('src', '/img/profile/' + response['user']['profile_image']);
+                    if (!$.isEmptyObject(response['user']['profile_image'])) {
+                        $('#preview_image').attr('src', '/img/profile/' + response['user']['profile_image']);
+                    }
                 } else {
-                    methods.notify(response['title'], response['message'], 'error');
+                    methods.notify(
+                        response['title'],
+                        response['message'],
+                        'error'
+                    );
                     methods.redirect(
                         2,
                         '/' +  $("meta[name=role]").data('slug') +'/' + $("meta[name=module]").attr('content')

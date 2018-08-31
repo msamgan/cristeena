@@ -32,8 +32,11 @@ class AppController extends Controller
                     'fields' => [
                         'username' => 'email',
                         'password' => 'password'
+                    ],
+                    'scope' => [
+                        'active' => 'yes'
                     ]
-                ]
+                ],
             ],
             'loginAction' => [
                 'controller' => 'Users',

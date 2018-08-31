@@ -240,7 +240,7 @@ class UsersController extends AppController
                 $response = [
                     'status' => false,
                     'title' => _('Authentication Fail'),
-                    'message' => _('Invalid email or password.')
+                    'message' => _('Invalid email or password OR you have been deactivated.')
                 ];
             }
 
