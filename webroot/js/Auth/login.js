@@ -3,9 +3,8 @@ define([
     'jq_validations',
     'methods'
 ], function ($, validation, methods) {
-    const action_url = '/api/login';
-    let login_form = $( "#login-form" );
-    login_form.validate({
+    let loginForm = $("#login-form");
+    loginForm.validate({
         ignore: ":hidden",
         rules: {
             email: {
@@ -15,28 +14,40 @@ define([
         errorClass: 'has-error',
         validClass: 'has-success',
         highlight: function(element, errorClass, validClass) {
-            $(element).parent().removeClass(validClass).addClass(errorClass);
+            $(element).parent()
+                .removeClass(validClass)
+                .addClass(errorClass);
         },
         unhighlight: function(element, errorClass, validClass) {
-            $(element).parent().removeClass(errorClass).addClass(validClass);
+            $(element).parent()
+                .removeClass(errorClass)
+                .addClass(validClass);
         },
-        submitHandler: function (form) {
-            let login_btn = $('#login-btn');
-            login_btn.attr('disabled', 'disabled');
-            login_btn.html('LOADING....');
-            $.post( action_url, login_form.serialize() ).done(function (response) {
+        submitHandler: function () {
+            let loginBtn = $('#login-btn');
+            loginBtn.attr('disabled', 'disabled');
+            loginBtn.html('LOADING....');
+            $.post('/api/login', loginForm.serialize()).done(function (response) {
                 response = methods.toArray(response);
                 if (response['status']) {
-                    methods.notify(response['title'], response['message'], 'success');
-                    login_btn.html('REDIRECTING..');
+                    methods.notify(
+                        response['title'],
+                        response['message'],
+                        'success'
+                    );
+                    loginBtn.html('REDIRECTING..');
                     methods.redirect(
                         2,
                         '/dashboard'
                     );
                 } else {
-                    methods.notify(response['title'], response['message'], 'error');
-                    login_btn.removeAttr('disabled');
-                    login_btn.html('LOGIN');
+                    methods.notify(
+                        response['title'],
+                        response['message'],
+                        'error'
+                    );
+                    loginBtn.removeAttr('disabled');
+                    loginBtn.html('LOGIN');
                 }
             });
 

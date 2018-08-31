@@ -63,7 +63,7 @@ class UsersController extends AppController
     }
 
     /**
-     *
+     * function to render admin dashboard.
      */
     public function dashboard()
     {

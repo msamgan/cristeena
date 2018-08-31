@@ -4,8 +4,8 @@ define([
     'methods',
     'jq_form'
 ], function ($, validation, methods) {
-    let user_form = $( "#user-form" );
-    user_form.validate({
+    let userForm = $("#user-form");
+    userForm.validate({
         ignore: ":hidden",
         rules: {
             email: {
@@ -19,14 +19,18 @@ define([
         errorClass: 'has-error',
         validClass: 'has-success',
         highlight: function(element, errorClass, validClass) {
-            $(element).parent().removeClass(validClass).addClass(errorClass);
+            $(element).parent()
+                .removeClass(validClass)
+                .addClass(errorClass);
         },
         unhighlight: function(element, errorClass, validClass) {
-            $(element).parent().removeClass(errorClass).addClass(validClass);
+            $(element).parent()
+                .removeClass(errorClass)
+                .addClass(validClass);
         },
     });
 
-    user_form.ajaxForm(function(response) {
+    userForm.ajaxForm(function(response) {
         response = methods.toArray(response);
         if (response['status']) {
             methods.notify(
@@ -51,8 +55,8 @@ define([
     /**
      * fill edit form data.
      */
-    if (user_form.data('activity') === 'edit') {
-        $.get('/api/users/view/' + user_form.data('slug'),function (response) {
+    if (userForm.data('activity') === 'edit') {
+        $.get('/api/users/view/' + userForm.data('slug'), function (response) {
                 response = methods.toArray(response);
                 if (response['status']) {
                     $('#email').val(response['user']['email']);

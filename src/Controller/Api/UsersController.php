@@ -6,7 +6,13 @@ use Cake\Event\Event;
 
 class UsersController extends AppController
 {
+    /**
+     * role id of admin in roles table
+     */
     const ADMIN_ROLE_ID = 2;
+    /**
+     * role id of user in roles table
+     */
     const USER_ROLE_ID = 3;
 
     /**
@@ -23,7 +29,7 @@ class UsersController extends AppController
     }
 
     /**
-     *
+     * listing all the users with admin and director actions ( as per login user. )
      */
     public function index()
     {
@@ -56,7 +62,7 @@ class UsersController extends AppController
     }
 
     /**
-     *
+     *listing all admins with director actions
      */
     public function admins()
     {
@@ -114,9 +120,7 @@ class UsersController extends AppController
     }
 
     /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null Redirects on successful add
+     * add user to system
      */
     public function add()
     {
@@ -168,11 +172,7 @@ class UsersController extends AppController
     }
 
     /**
-     * Edit method
-     *
-     * @param string|null $slug User slug.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @param null $slug
      */
     public function edit($slug = null)
     {
@@ -225,6 +225,9 @@ class UsersController extends AppController
         $this->_throw($response);
     }
 
+    /**
+     *
+     */
     public function login()
     {
         if ($this->request->is('post')) {
@@ -248,6 +251,9 @@ class UsersController extends AppController
         }
     }
 
+    /**
+     *
+     */
     public function changePassword()
     {
         if ($this->request->is('post')) {
@@ -278,11 +284,7 @@ class UsersController extends AppController
     }
 
     /**
-     * Delete method
-     *
-     * @param string|null $id User id.
-     * @return \Cake\Http\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     * @param null $id
      */
     public function delete($id = null)
     {
