@@ -50,7 +50,7 @@ class User extends Entity
 
     /**
      * @param $password
-     * @return mixed
+     * @return bool|string
      */
     protected function _setPassword($password)
     {
@@ -88,7 +88,7 @@ class User extends Entity
      */
     private function _adminEdit()
     {
-        return '<a class="btn-info btn-xs" href="/admin/users/edit/'. $this->_properties['slug'] .'" title="Edit user" ><i class="lnr lnr-pencil" ></i></a>';
+        return '<a class="btn-info btn-xs" href="/admin/users/edit/' . $this->_properties['slug'] .'" title="Edit user" ><i class="lnr lnr-pencil" ></i></a>';
     }
 
     /**
@@ -96,7 +96,7 @@ class User extends Entity
      */
     private function _directorEditAdmin()
     {
-        return '<a class="btn-info btn-xs" href="/director/admins/edit/'. $this->_properties['slug'] .'" title="Edit user" ><i class="lnr lnr-pencil" ></i></a>';
+        return '<a class="btn-info btn-xs" href="/director/admins/edit/' . $this->_properties['slug'] .'" title="Edit user" ><i class="lnr lnr-pencil" ></i></a>';
     }
 
     /**
@@ -104,7 +104,7 @@ class User extends Entity
      */
     private function _directorEditUser()
     {
-        return '<a class="btn-info btn-xs" href="/director/users/edit/'. $this->_properties['slug'] .'" title="Edit user" ><i class="lnr lnr-pencil" ></i></a>';
+        return '<a class="btn-info btn-xs" href="/director/users/edit/' . $this->_properties['slug'] .'" title="Edit user" ><i class="lnr lnr-pencil" ></i></a>';
     }
 
     /**
@@ -112,6 +112,6 @@ class User extends Entity
      */
     private function _delete()
     {
-        return '<a class="btn-danger btn-xs delete-user" style="cursor: pointer; margin-left:5px;" data-path="/api/users/delete/'. $this->_properties['id'] .'" title="Delete user" ><i class="lnr lnr-trash" ></i></a>';
+        return '<a class="btn-danger btn-xs delete-user" style="cursor: pointer; margin-left:5px;" data-path="/api/users/delete/' . $this->_properties['id'] .'" title="Delete user" ><i class="lnr lnr-trash" ></i></a>';
     }
 }
