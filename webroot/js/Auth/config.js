@@ -12,6 +12,4 @@ requirejs.config({
 
 requirejs([
     'login_submit'
-],function () {
-    console.log('all Auth dependencies injected.');
-});
+],function () { });

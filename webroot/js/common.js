@@ -1,3 +1,6 @@
+/**
+ * Common configuration file contains all the common paths and there dependencies.
+ */
 requirejs.config({
     baseUrl: '/js/',
     paths: {

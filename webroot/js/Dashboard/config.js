@@ -19,10 +19,7 @@ requirejs([
     'bootstrap',
     'klorofil'
 ],function ($) {
-    console.log('all Dashboard dependencies injected.');
-    let module = $("meta[name=module]").attr('content');
-
-    let dashboard_menu = $('#'+ module +'-menu');
-    dashboard_menu.removeClass('collapsed')
-    dashboard_menu.addClass('active')
+    $('#' + $("meta[name=module]").attr('content') + '-menu')
+        .removeClass('collapsed')
+        .addClass('active');
 });

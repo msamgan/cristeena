@@ -40,13 +40,14 @@ class UsersController extends AppController
     }
 
     /**
-     *
+     * @return \Cake\Http\Response|null
      */
     public function login()
     {
         if ($this->Auth->User()) {
             return $this->redirect('/dashboard');
         }
+
         $this->viewBuilder()->setLayout('auth');
     }
 
@@ -60,6 +61,9 @@ class UsersController extends AppController
         return $this->redirect($this->Auth->logout());
     }
 
+    /**
+     * @return \Cake\Http\Response|null
+     */
     public function dashboard()
     {
         if ($this->authUser->role->name == 'Admin') {
