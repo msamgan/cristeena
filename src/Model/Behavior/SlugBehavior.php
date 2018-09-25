@@ -47,9 +47,16 @@ class SlugBehavior extends Behavior
         Event $event,
         EntityInterface $entity
     ) {
-        $entity->set(
-            'slug',
-            $this->slug($entity->name)
-        );
+        if (empty($entity->slug)) {
+            $slug = $this->slug($entity->name);
+        } else {
+            $slug = $this->slug(
+                $entity->name,
+                true,
+                $entity->slug
+            );
+        }
+
+        $entity->set(compact('slug'));
     }
 }

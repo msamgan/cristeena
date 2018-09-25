@@ -145,8 +145,6 @@ class UsersController extends AppController
                 $this->_throw($response);
             }
 
-            $request['slug'] = $this->Methods->slug($request['name']);
-
             if (!empty($request['profile_image'])) {
                 $request['profile_image'] = $this->Methods->uploadImage(
                     'img/profile',
@@ -183,8 +181,6 @@ class UsersController extends AppController
         $user = $this->Users->findBySlug($slug)->first();
         if ($this->request->is(['patch', 'post', 'put'])) {
             $request = $this->request->getData();
-
-            $request['slug'] = $this->Methods->slug($request['name'], true, $user->slug);
 
             if (isset($request['email'])) {
                 /**
