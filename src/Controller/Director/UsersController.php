@@ -27,7 +27,6 @@ class UsersController extends AppController
                 return $this->redirect('/dashboard');
             } else {
                 $module = 'users';
-                $this->viewBuilder()->setLayout($module);
                 $this->set(compact('module'));
                 $this->set('activity', 'index');
             }

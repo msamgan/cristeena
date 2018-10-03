@@ -26,7 +26,6 @@ class AdminsController extends AppController
 
                 return $this->redirect('/dashboard');
             } else {
-                $this->viewBuilder()->setLayout('users');
                 $this->set('module', 'admins');
                 $this->set('activity', 'index');
             }

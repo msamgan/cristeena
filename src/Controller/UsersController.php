@@ -16,7 +16,6 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->viewBuilder()->setLayout('users');
         $this->set('activity', 'index');
     }
 
