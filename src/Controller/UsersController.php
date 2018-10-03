@@ -16,6 +16,7 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+        $this->set('module', 'users');
         $this->set('activity', 'index');
     }
 
@@ -24,7 +25,7 @@ class UsersController extends AppController
      */
     public function profile()
     {
-        $this->set('module', 'profile');
+        $this->set('activity', 'profile');
     }
 
     /**
@@ -32,7 +33,7 @@ class UsersController extends AppController
      */
     public function settings()
     {
-        $this->set('module', 'settings');
+        $this->set('activity', 'settings');
     }
 
     /**

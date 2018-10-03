@@ -28,8 +28,9 @@ requirejs(['/js/common.js'], function () {
     ],function ($) {
         let meta = $("meta[name=module]");
         let module = meta.attr('content');
+        let activity = meta.attr('activity');
 
-        if (module === 'profile' || module === 'settings') {
+        if (activity === 'profile' || activity === 'settings') {
             return false;
         }
 
