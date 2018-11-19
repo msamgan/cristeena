@@ -20,6 +20,11 @@ class UsersController extends AppController
     const USER_ROLE_ID = 3;
 
     /**
+     * containing the model of the controller class.s
+     */
+    private $model;
+
+    /**
      * @param Event $event
      * @return \Cake\Http\Response|null|void
      */
@@ -30,6 +35,8 @@ class UsersController extends AppController
             'login'
         ]);
         $this->autoRender = false;
+
+        $this->model = $this->Users;
     }
 
     /**
@@ -45,12 +52,12 @@ class UsersController extends AppController
             'order' => [
                 'Users.id' => 'DESC'
             ],
-            'limit' => $this->Users
+            'limit' => $this->model
                 ->find('all')
                 ->count()
         ];
 
-        $users = $this->paginate($this->Users);
+        $users = $this->paginate($this->model);
         $count = 1;
         foreach ($users as $user) {
             $user->count = $count;
@@ -78,12 +85,12 @@ class UsersController extends AppController
             'order' => [
                 'Users.id' => 'DESC'
             ],
-            'limit' => $this->Users
+            'limit' => $this->model
                 ->find('all')
                 ->count()
         ];
 
-        $users = $this->paginate($this->Users);
+        $users = $this->paginate($this->model);
         $count = 1;
         foreach ($users as $user) {
             $user->count = $count;
@@ -105,7 +112,7 @@ class UsersController extends AppController
      */
     public function view($slug = null)
     {
-        $user = $this->Users->findBySlug($slug)->first();
+        $user = $this->model->findBySlug($slug)->first();
 
         if (!empty($user)) {
             $response = [
@@ -128,14 +135,14 @@ class UsersController extends AppController
      */
     public function add()
     {
-        $user = $this->Users->newEntity();
+        $user = $this->model->newEntity();
         if ($this->request->is('post')) {
             $request = $this->request->getData();
 
             /**
              * If email already exist
              */
-            if (!empty($this->Users->findByEmail($request['email'])->first())) {
+            if (!empty($this->model->findByEmail($request['email'])->first())) {
                 $response = [
                     'status' => false,
                     'title' => _('Email already used'),
@@ -154,8 +161,8 @@ class UsersController extends AppController
                 $request['profile_image'] = 'profile.jpeg';
             }
 
-            $user = $this->Users->patchEntity($user, $request);
-            if ($this->Users->save($user)) {
+            $user = $this->model->patchEntity($user, $request);
+            if ($this->model->save($user)) {
                 $response = [
                     'status' => true,
                     'title' => _('The user has been saved.'),
@@ -178,7 +185,7 @@ class UsersController extends AppController
      */
     public function edit($slug = null)
     {
-        $user = $this->Users->findBySlug($slug)->first();
+        $user = $this->model->findBySlug($slug)->first();
         if ($this->request->is(['patch', 'post', 'put'])) {
             $request = $this->request->getData();
 
@@ -186,7 +193,7 @@ class UsersController extends AppController
                 /**
                  * If email already exist
                  */
-                $existingUser = $this->Users->findByEmail($request['email'])->first();
+                $existingUser = $this->model->findByEmail($request['email'])->first();
                 if (!empty($existingUser) && $user->id != $existingUser->id) {
                     $response = [
                         'status' => false,
@@ -205,8 +212,8 @@ class UsersController extends AppController
                 );
             }
 
-            $user = $this->Users->patchEntity($user, $request);
-            if ($this->Users->save($user)) {
+            $user = $this->model->patchEntity($user, $request);
+            if ($this->model->save($user)) {
                 $response = [
                     'status' => true,
                     'title' => _('The user has been updated.'),
@@ -263,9 +270,9 @@ class UsersController extends AppController
             $this->request->data['email'] = $this->authUser->email;
             $user = $this->Auth->identify();
             if ($user) {
-                $user = $this->Users->get($user['id']);
+                $user = $this->model->get($user['id']);
                 $user->password = $newPassword;
-                $this->Users->save($user);
+                $this->model->save($user);
                 $response = [
                     'status' => true,
                     'title' => _('Password Changed'),
@@ -291,8 +298,8 @@ class UsersController extends AppController
 
         $this->request->allowMethod(['get']);
         try {
-            $user = $this->Users->get($id);
-            if ($this->Users->delete($user)) {
+            $user = $this->model->get($id);
+            if ($this->model->delete($user)) {
                 $response = [
                     'status' => true,
                     'title' => _('The user has been deleted.'),
