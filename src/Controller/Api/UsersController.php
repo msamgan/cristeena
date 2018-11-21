@@ -2,6 +2,7 @@
 namespace App\Controller\Api;
 
 use App\Controller\AppController;
+use Cake\Auth\DefaultPasswordHasher;
 use Cake\Event\Event;
 
 /**
@@ -261,25 +262,29 @@ class UsersController extends AppController
      */
     public function changePassword()
     {
+        $defaultHasher = new DefaultPasswordHasher();
+
         if ($this->getRequest()->is('post')) {
-            $newPassword = $this->getRequest()->getData()['new_password'];
-            $this->getRequest()->data('email' , $this->authUser->email);
-            $user = $this->Auth->identify();
-            if ($user) {
-                $user = $this->model->get($user['id']);
-                $user->password = $newPassword;
-                $response = [
-                    'status' => true,
-                    'title' => _('Password Changed'),
-                    'message' => _('Your password has been changed successfully')
-                ];
-            } else {
-                $response = [
-                    'status' => false,
-                    'title' => _('Password Changed Fail'),
-                    'message' => _('your current password is not correct.')
-                ];
+            $request = $this->getRequest()->getData();
+            if ($defaultHasher->check($request['password'], $this->authUser->password)) {
+                $user = $this->model->get($this->authUser->id);
+                $user->password = $request['new_password'];
+                if ($this->model->save($user)) {
+                    $response = [
+                        'status' => true,
+                        'title' => _('Password Changed'),
+                        'message' => _('Your password has been changed successfully')
+                    ];
+
+                    $this->_throw($response);
+                }
             }
+
+            $response = [
+                'status' => false,
+                'title' => _('Password Changed Fail'),
+                'message' => _('your current password is not correct.')
+            ];
 
             $this->_throw($response);
         }
