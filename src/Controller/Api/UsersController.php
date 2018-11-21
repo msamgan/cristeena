@@ -52,6 +52,7 @@ class UsersController extends AppController
             'order' => [
                 'Users.id' => 'DESC'
             ],
+            'maxLimit' => self::PAGINATION_MAX_LIMIT,
             'limit' => $this->model
                 ->find('all')
                 ->count()
@@ -85,6 +86,7 @@ class UsersController extends AppController
             'order' => [
                 'Users.id' => 'DESC'
             ],
+            'maxLimit' => self::PAGINATION_MAX_LIMIT,
             'limit' => $this->model
                 ->find('all')
                 ->count()
@@ -104,13 +106,9 @@ class UsersController extends AppController
     }
 
     /**
-     * View method
-     *
-     * @param string|null $slug User slug.
-     * @return \Cake\Http\Response|void
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     * @param $slug
      */
-    public function view($slug = null)
+    public function view($slug)
     {
         $user = $this->model->findBySlug($slug)->first();
 
@@ -181,13 +179,13 @@ class UsersController extends AppController
     }
 
     /**
-     * @param null $slug
+     * @param $slug
      */
-    public function edit($slug = null)
+    public function edit($slug)
     {
         $user = $this->model->findBySlug($slug)->first();
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $request = $this->request->getData();
+        if ($this->getRequest()->is(['patch', 'post', 'put'])) {
+            $request = $this->getRequest()->getData();
 
             if (isset($request['email'])) {
                 /**
@@ -237,7 +235,7 @@ class UsersController extends AppController
      */
     public function login()
     {
-        if ($this->request->is('post')) {
+        if ($this->getRequest()->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
@@ -263,16 +261,13 @@ class UsersController extends AppController
      */
     public function changePassword()
     {
-        if ($this->request->is('post')) {
-            $newPassword = $this->request->data['new_password'];
-            unset($this->request->data['new_password']);
-            unset($this->request->data['confirm_password']);
-            $this->request->data['email'] = $this->authUser->email;
+        if ($this->getRequest()->is('post')) {
+            $newPassword = $this->getRequest()->getData()['new_password'];
+            $this->getRequest()->data('email' , $this->authUser->email);
             $user = $this->Auth->identify();
             if ($user) {
                 $user = $this->model->get($user['id']);
                 $user->password = $newPassword;
-                $this->model->save($user);
                 $response = [
                     'status' => true,
                     'title' => _('Password Changed'),
@@ -296,7 +291,7 @@ class UsersController extends AppController
     public function delete($id = null)
     {
 
-        $this->request->allowMethod(['get']);
+        $this->getRequest()->allowMethod(['get']);
         try {
             $user = $this->model->get($id);
             if ($this->model->delete($user)) {

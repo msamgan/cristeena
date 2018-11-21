@@ -15,6 +15,9 @@ class AppController extends Controller
      */
     protected $authUser;
 
+
+    const PAGINATION_MAX_LIMIT = 10000;
+
     /**
      * Initialization hook method.
      * @return void

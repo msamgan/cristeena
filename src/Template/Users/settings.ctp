@@ -26,7 +26,7 @@
                                     </div>
                                     <div>
                                         <label for="confirm-password" >Confirm New Password</label>
-                                        <input id="confirm-password" type="password" class="form-control" placeholder="Confirm password" name="confirm_pasword" required>
+                                        <input id="confirm-password" type="password" class="form-control" placeholder="Confirm password" name="confirm_password" required>
                                         <br>
                                     </div>
                                 </div>
