@@ -8,7 +8,7 @@ requirejs.config({
         bootstrap: '../assets/vendor/bootstrap/js/bootstrap.min',
         klorofil: '../assets/scripts/klorofil-common',
         jq_validations: 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min',
-        jq_form: 'http://malsup.github.com/jquery.form',
+        jq_form: 'https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min',
         swal: 'https://unpkg.com/sweetalert/dist/sweetalert.min',
         datatables: 'https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min',
         methods: 'methods',
