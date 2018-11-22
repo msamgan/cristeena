@@ -81,10 +81,13 @@ class AppController extends Controller
 
     /**
      * @param $package
+     * @return \Cake\Http\Response
      */
     protected function _throw($package)
     {
-        echo json_encode($package); exit();
+        return $this->getResponse()
+            ->withType('application/json')
+            ->withStringBody(json_encode($package));
     }
 
 }

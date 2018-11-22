@@ -10,7 +10,7 @@ requirejs.config({
         jq_validations: 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min',
         jq_form: 'https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min',
         swal: 'https://unpkg.com/sweetalert/dist/sweetalert.min',
-        datatables: 'https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min',
+        dataTables: 'https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min',
         methods: 'methods',
         constants: 'constants'
     },
@@ -19,9 +19,9 @@ requirejs.config({
             deps : [ 'jquery'],
             exports: 'bootstrap'
         },
-        datatables: {
+        dataTables: {
             deps : [ 'jquery'],
-            exports: 'datatables'
+            exports: 'dataTables'
         }
     }
 });

@@ -41,7 +41,7 @@ class UsersController extends AppController
     }
 
     /**
-     * listing all the users with admin and director actions ( as per login user. )
+     * @return \Cake\Http\Response
      */
     public function index()
     {
@@ -71,11 +71,11 @@ class UsersController extends AppController
 
         $response['data'] = $users;
 
-        $this->_throw($response);
+        return $this->_throw($response);
     }
 
     /**
-     *listing all admins with director actions
+     * @return \Cake\Http\Response
      */
     public function admins()
     {
@@ -103,11 +103,12 @@ class UsersController extends AppController
 
         $response['data'] = $users;
 
-        $this->_throw($response);
+        return $this->_throw($response);
     }
 
     /**
      * @param $slug
+     * @return \Cake\Http\Response
      */
     public function view($slug)
     {
@@ -126,11 +127,11 @@ class UsersController extends AppController
             ];
         }
 
-        $this->_throw($response);
+        return $this->_throw($response);
     }
 
     /**
-     * add user to system
+     * @return \Cake\Http\Response
      */
     public function add()
     {
@@ -148,7 +149,7 @@ class UsersController extends AppController
                     'message' => _('It seems like there is already a user with this email. Try other email.')
                 ];
 
-                $this->_throw($response);
+                return $this->_throw($response);
             }
 
             if (!empty($request['profile_image'])) {
@@ -176,11 +177,12 @@ class UsersController extends AppController
             }
         }
 
-        $this->_throw($response);
+        return $this->_throw($response);
     }
 
     /**
      * @param $slug
+     * @return \Cake\Http\Response
      */
     public function edit($slug)
     {
@@ -200,7 +202,7 @@ class UsersController extends AppController
                         'message' => _('It seems like there is already a user with this email. Try other email.')
                     ];
 
-                    $this->_throw($response);
+                    return $this->_throw($response);
                 }
             }
 
@@ -228,11 +230,11 @@ class UsersController extends AppController
             }
         }
 
-        $this->_throw($response);
+        return $this->_throw($response);
     }
 
     /**
-     *
+     * @return \Cake\Http\Response
      */
     public function login()
     {
@@ -253,12 +255,12 @@ class UsersController extends AppController
                 ];
             }
 
-            $this->_throw($response);
+            return $this->_throw($response);
         }
     }
 
     /**
-     *
+     * @return \Cake\Http\Response
      */
     public function changePassword()
     {
@@ -276,7 +278,7 @@ class UsersController extends AppController
                         'message' => _('Your password has been changed successfully')
                     ];
 
-                    $this->_throw($response);
+                    return $this->_throw($response);
                 }
             }
 
@@ -286,20 +288,19 @@ class UsersController extends AppController
                 'message' => _('your current password is not correct.')
             ];
 
-            $this->_throw($response);
+            return $this->_throw($response);
         }
     }
 
     /**
-     * @param null $id
+     * @param $id
+     * @return \Cake\Http\Response
      */
-    public function delete($id = null)
+    public function delete($id)
     {
-
         $this->getRequest()->allowMethod(['get']);
         try {
-            $user = $this->model->get($id);
-            if ($this->model->delete($user)) {
+            if ($this->model->delete($this->model->get($id))) {
                 $response = [
                     'status' => true,
                     'title' => _('The user has been deleted.'),
@@ -320,6 +321,6 @@ class UsersController extends AppController
             ]);
         }
 
-        $this->_throw($response);
+        return $this->_throw($response);
     }
 }

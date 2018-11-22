@@ -1,8 +1,8 @@
 define([
     'jquery',
-    'datatables',
+    'dataTables',
     'methods'
-], function ($, DataTable, methods) {
+], function ($, dataTable, methods) {
 
     /**
      * js for deleting the user.

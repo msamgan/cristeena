@@ -31,7 +31,6 @@ define([
     });
 
     userForm.ajaxForm(function(response) {
-        response = methods.toArray(response);
         if (response['status']) {
             methods.notify(
                 response['title'],
@@ -57,7 +56,6 @@ define([
      */
     if (userForm.data('activity') === 'edit') {
         $.get('/api/users/view/' + userForm.data('slug'), function (response) {
-                response = methods.toArray(response);
                 if (response['status']) {
                     $('#email').val(response['user']['email']);
                     $('#name').val(response['user']['name']);
