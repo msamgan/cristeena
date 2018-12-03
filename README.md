@@ -6,6 +6,10 @@ A skeleton for creating backend applications with [CakePHP](https://cakephp.org)
 
 The framework source code can be found here: [samgan-khan/cristeena](https://github.com/samgan-khan/cristeena).
 
+## Demo
+
+check out the [demo here](https://cristeena.codebysamgan.com/)
+
 ## Installation
 
 1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
