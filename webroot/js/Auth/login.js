@@ -28,7 +28,6 @@ define([
             loginBtn.attr('disabled', 'disabled');
             loginBtn.html('LOADING....');
             $.post('/api/login', loginForm.serialize()).done(function (response) {
-                response = methods.toArray(response);
                 if (response['status']) {
                     methods.notify(
                         response['title'],
