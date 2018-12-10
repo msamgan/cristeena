@@ -29,11 +29,6 @@ define([
             loginBtn.html('LOADING....');
             $.post('/api/login', loginForm.serialize()).done(function (response) {
                 if (response['status']) {
-                    methods.notify(
-                        response['title'],
-                        response['message'],
-                        'success'
-                    );
                     loginBtn.html('REDIRECTING..');
                     methods.redirect(
                         2,
