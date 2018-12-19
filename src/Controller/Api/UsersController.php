@@ -248,8 +248,10 @@ class UsersController extends AppController
                     'message' => _('login successful, redirecting to dashboard.')
                 ];
 
-                $this->log("user logged in!", 'info');
-
+                $this->log(
+                    'User Successfully login ' . json_encode($user),
+                    'info'
+                );
             } else {
                 $response = [
                     'status' => false,

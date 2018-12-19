@@ -55,6 +55,11 @@ class UsersController extends AppController
     {
         $this->Flash->success(_('You are now logged out.'));
 
+        $this->log(
+            'User Successfully logged Out ' . json_encode($this->authUser),
+            'info'
+        );
+
         return $this->redirect($this->Auth->logout());
     }
 

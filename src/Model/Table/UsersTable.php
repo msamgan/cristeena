@@ -40,6 +40,7 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Slug');
+        $this->addBehavior('Logger');
 
         $this->belongsTo('Roles', [
             'foreignKey' => 'role_id',
