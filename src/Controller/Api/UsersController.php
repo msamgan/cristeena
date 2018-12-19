@@ -247,6 +247,9 @@ class UsersController extends AppController
                     'title' => _('Authentication Success'),
                     'message' => _('login successful, redirecting to dashboard.')
                 ];
+
+                $this->log("user logged in!", 'info');
+
             } else {
                 $response = [
                     'status' => false,
