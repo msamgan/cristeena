@@ -314,7 +314,7 @@ return [
         'debug' => [
             'className' => 'Cake\Log\Engine\FileLog',
             'path' => LOGS,
-            'file' => 'debug',
+            'file' => 'debug-' . date('Y-m-d'),
             'url' => env('LOG_DEBUG_URL', null),
             'scopes' => false,
             'levels' => ['notice', 'info', 'debug'],
@@ -322,7 +322,7 @@ return [
         'error' => [
             'className' => 'Cake\Log\Engine\FileLog',
             'path' => LOGS,
-            'file' => 'error',
+            'file' => 'error-' . date('Y-m-d'),
             'url' => env('LOG_ERROR_URL', null),
             'scopes' => false,
             'levels' => ['warning', 'error', 'critical', 'alert', 'emergency'],

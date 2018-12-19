@@ -17,7 +17,6 @@ define([
             }).then((willDelete) => {
                 if (willDelete) {
                     $.get($(this).data('path')).done(function (response) {
-                        response = methods.toArray(response);
                         if (response['status']) {
                             methods.notify(
                                 response['title'],

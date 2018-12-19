@@ -43,10 +43,8 @@ class SlugBehavior extends Behavior
      * @param Event $event
      * @param EntityInterface $entity
      */
-    public function beforeSave(
-        Event $event,
-        EntityInterface $entity
-    ) {
+    public function beforeSave(Event $event, EntityInterface $entity)
+    {
         if (empty($entity->slug)) {
             $slug = $this->slug($entity->name);
         } else {
