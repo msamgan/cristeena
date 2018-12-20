@@ -7,6 +7,10 @@ use Cake\Event\Event;
 
 class AppController extends BaseController
 {
+    /**
+     * @param Event $event
+     * @return \Cake\Http\Response|null|void
+     */
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);

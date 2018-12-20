@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <h1>Log Viewer</h1>
         <p>Please select the date of in the sidebar.</p>
-        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Sidebar Menu</a>
+        <?= $this->element('menu-toggle') ?>
     </div>
 </div>
 <!-- /#page-content-wrapper -->
