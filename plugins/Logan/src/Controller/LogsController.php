@@ -9,4 +9,9 @@ class LogsController extends AppController
     {
 
     }
+
+    public function view()
+    {
+
+    }
 }

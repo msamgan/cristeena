@@ -8,6 +8,7 @@ Router::plugin(
     ['path' => '/log'],
     function (RouteBuilder $routes) {
         $routes->connect('/', ['controller' => 'logs', 'action' => 'index']);
+        $routes->connect('/view/*', ['controller' => 'logs', 'action' => 'view']);
         $routes->fallbacks(DashedRoute::class);
     }
 );

@@ -10,5 +10,22 @@ class AppController extends BaseController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+        $this->set('dates', $this->_getLogDates());
+
+    }
+
+    /**
+     * @return array
+     */
+    private function _getLogDates()
+    {
+        $dates = [];
+        foreach (glob(LOGS . 'debug-*.log') as $log) {
+            $re = '/(\d{8})|([0-9]{4}-[0-9]{2}-[0-9]{2})|([0-9]{2}-[0-9]{2}-[0-9]{4})/';
+            preg_match($re, $log, $matches);
+            array_push($dates, $matches[0]);
+        }
+
+        return array_reverse($dates);
     }
 }
