@@ -13,7 +13,7 @@
                             <ul class="nav nav-tabs">
                                 <?php $count = 0; foreach ($contents as $key => $content): ?>
                                     <li class="<?php if ($count == 0) { echo 'active'; } ?>">
-                                        <a href="#<?= $key ?>" data-toggle="tab"><?= ucfirst($key) ?>( <?= count($content) ?> )</a>
+                                        <a href="#<?= $key ?>" data-toggle="tab"><?= ucfirst($key) ?>(<?= count($content) ?>)</a>
                                     </li>
                                     <?php $count++; endforeach; ?>
                             </ul>

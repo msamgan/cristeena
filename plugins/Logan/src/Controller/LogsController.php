@@ -57,6 +57,7 @@ class LogsController extends AppController
                     $log[$levelKey][] = $content;
                 }
             }
+            $log[$levelKey] = array_reverse($log[$levelKey]);
         }
 
         return $log;
