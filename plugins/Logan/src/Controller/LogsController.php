@@ -8,7 +8,13 @@ class LogsController extends AppController
 {
     private $levels = [
         ' Info: ',
-        ' Notice: '
+        ' Notice: ',
+        ' Debug: ',
+        ' Error: ',
+        ' Warning: ',
+        ' Critical: ',
+        ' Alert: ',
+        ' Emergency: '
     ];
 
     public function index()
@@ -22,6 +28,7 @@ class LogsController extends AppController
     public function view($date)
     {
         $contents = $this->_getLogFileContent('debug', $date);
+        $contents = array_merge($contents, $this->_getLogFileContent('error', $date));
         $contents = $this->_formatContent($contents);
 
         $this->set(compact('date', 'contents'));
