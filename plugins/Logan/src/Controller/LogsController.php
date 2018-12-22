@@ -41,7 +41,12 @@ class LogsController extends AppController
      */
     private function _getLogFileContent($level, $date)
     {
+        if (!file_exists(LOGS . $level . '-' .$date . '.log')) {
+            return [];
+        }
+
         $file = new File(LOGS . $level . '-' .$date . '.log');
+
         $contents = $file->read();
         $file->close();
 
@@ -58,13 +63,16 @@ class LogsController extends AppController
     {
         $log = [];
         foreach ($this->levels as $level) {
+            $levelKey = null;
             foreach ($contents as $key => $content) {
                 if (strpos($content, $level)) {
                     $levelKey = substr(strtolower(trim($level)), 0, -1);
                     $log[$levelKey][] = $content;
                 }
             }
-            $log[$levelKey] = array_reverse($log[$levelKey]);
+            if ($levelKey) {
+                $log[$levelKey] = array_reverse($log[$levelKey]);
+            }
         }
 
         return $log;
