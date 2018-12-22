@@ -3,7 +3,7 @@
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
             <a href="#">
-                Menu Listing
+                Listing Dates
             </a>
         </li>
         <li><a href="/" >Main Dashboard</a></li>

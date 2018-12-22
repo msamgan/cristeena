@@ -23,20 +23,26 @@ class AppController extends BaseController
      */
     private function _getLogDates()
     {
+        $re = '/(\d{8})|([0-9]{4}-[0-9]{2}-[0-9]{2})|([0-9]{2}-[0-9]{2}-[0-9]{4})/';
         $dates = [];
         foreach (glob(LOGS . 'debug-*.log') as $log) {
-            $re = '/(\d{8})|([0-9]{4}-[0-9]{2}-[0-9]{2})|([0-9]{2}-[0-9]{2}-[0-9]{4})/';
             preg_match($re, $log, $matches);
-            array_push($dates, $matches[0]);
+            array_push($dates, strtotime($matches[0]));
         }
 
         foreach (glob(LOGS . 'error-*.log') as $log) {
-            $re = '/(\d{8})|([0-9]{4}-[0-9]{2}-[0-9]{2})|([0-9]{2}-[0-9]{2}-[0-9]{4})/';
             preg_match($re, $log, $matches);
-            array_push($dates, $matches[0]);
+            array_push($dates, strtotime($matches[0]));
         }
 
+        $dates = array_unique($dates);
+        sort($dates);
 
-        return array_unique($dates);
+        $sortedDates = [];
+        foreach ($dates as $date) {
+            array_push($sortedDates, date('Y-m-d', $date));
+        }
+
+        return array_reverse($sortedDates);
     }
 }
