@@ -217,3 +217,5 @@ Plugin::load('Migrations'); //Loads a single plugin named Migrations
 if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
+
+Plugin::load('Logan', ['bootstrap' => false, 'routes' => true]);
