@@ -15,3 +15,15 @@ composer require samgan-khan/logan
 Before using this plugin all you have to do is change you log file status to daily.
 
 This can be done a few simple steps, you can follow the [steps here](https://codebysamgan.com/how-to-make-log-daily-in-cakephp-3-x/).
+
+
+## Screenshots
+
+![alt home-logan] (https://codebysamgan.com/wp-content/uploads/2018/12/home-logViewer.png)
+
+![alt date-view-logan] (https://codebysamgan.com/wp-content/uploads/2018/12/date-logView.png)
+
+
+
+
+
