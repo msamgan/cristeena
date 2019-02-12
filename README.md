@@ -50,3 +50,7 @@ configuration relevant for your application.
 ## Layout
 
 The app skeleton uses a CakePHP 3.x. framework by default.
+
+## Documentation
+
+For detailed documentation visit [here](https://codebysamgan.com/cristeena-documetation/)
