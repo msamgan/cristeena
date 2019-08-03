@@ -4,7 +4,7 @@
 
 A skeleton for creating backend applications with [CakePHP](https://cakephp.org) 3.x. with basic user module for 3 different roles.
 
-The framework source code can be found here: [msamgan/cristeena](https://github.com/msamgan/cristeena).
+The framework source code can be found here: [samgan-khan/cristeena](https://github.com/msamgan/cristeena).
 
 ## Demo
 
@@ -18,13 +18,13 @@ check out the [demo here](https://cristeena.codebysamgan.com/)
 If Composer is installed globally, run
 
 ```bash
-composer create-project --prefer-dist msamgan/cristeena
+composer create-project --prefer-dist samgan-khan/cristeena
 ```
 
 In case you want to use a custom app dir name (e.g. `/myapp/`):
 
 ```bash
-composer create-project --prefer-dist msamgan/cristeena myapp
+composer create-project --prefer-dist samgan-khan/cristeena myapp
 ```
 
 You can now either use your machine's webserver to view the default home page, or start
