@@ -1,8 +1,11 @@
 <?php
+
 namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Http\Response;
+use Exception;
 
 /**
  * Class AppController
@@ -10,17 +13,14 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
+    const PAGINATION_MAX_LIMIT = 10000;
     /**
      * @var $authUser
      */
     protected $authUser;
 
-
-    const PAGINATION_MAX_LIMIT = 10000;
-
     /**
-     * Initialization hook method.
-     * @return void
+     * @throws Exception
      */
     public function initialize()
     {
@@ -81,7 +81,7 @@ class AppController extends Controller
 
     /**
      * @param $package
-     * @return \Cake\Http\Response
+     * @return Response
      */
     protected function _throw($package)
     {

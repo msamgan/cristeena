@@ -1,8 +1,11 @@
 <?php
+
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Http\Response;
+use Cake\Network\Exception\NotFoundException;
 
 /**
  * Class UsersController
@@ -12,14 +15,14 @@ class UsersController extends AppController
 {
     /**
      * @param Event $event
-     * @return \Cake\Http\Response|null
+     * @return Response|null
      */
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        if ($this->request->params['prefix'] == 'admin' && $this->authUser->role->name != 'Admin') {
-            $this->Flash->error(_('You are not allowed to access this URL'));
 
+        if ($this->request->getParam('prefix') == 'admin' && $this->authUser->role->name != 'Admin') {
+            $this->Flash->error(_('You are not allowed to access this URL'));
             return $this->redirect('/dashboard');
         } else {
             $module = 'users';
@@ -31,14 +34,16 @@ class UsersController extends AppController
     /**
      * Index method
      *
-     * @return \Cake\Http\Response|void
+     * @return Response|void
      */
-    public function index() {}
+    public function index()
+    {
+    }
 
     /**
      * Add method
      *
-     * @return \Cake\Http\Response|void renders view.
+     * @return Response|void renders view.
      */
     public function add()
     {
@@ -49,8 +54,8 @@ class UsersController extends AppController
      * Edit method
      *
      * @param string|null $slug User slug.
-     * @return \Cake\Http\Response|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @return Response|void Redirects on successful edit, renders view otherwise.
+     * @throws NotFoundException When record not found.
      */
     public function edit($slug = null)
     {

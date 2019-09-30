@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Controller;
 
-use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Http\Response;
 
 /**
  * Class UsersController
@@ -37,7 +38,7 @@ class UsersController extends AppController
     }
 
     /**
-     * @return \Cake\Http\Response|null
+     * @return Response|null
      */
     public function login()
     {
@@ -53,7 +54,7 @@ class UsersController extends AppController
      */
     public function logout()
     {
-        $this->Flash->success(_('You are now logged out.'));
+        //$this->Flash->success(_('You are now logged out.'));
 
         $this->log(
             'User Successfully logged Out ' . json_encode($this->authUser),
@@ -64,7 +65,7 @@ class UsersController extends AppController
     }
 
     /**
-     * @return \Cake\Http\Response|null
+     * @return Response|null
      */
     public function dashboard()
     {

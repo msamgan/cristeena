@@ -1,9 +1,12 @@
 <?php
+
 namespace App\Controller\Api;
 
 use App\Controller\AppController;
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\Event\Event;
+use Cake\Http\Response;
+use Exception;
 
 /**
  * Class UsersController
@@ -27,21 +30,21 @@ class UsersController extends AppController
 
     /**
      * @param Event $event
-     * @return \Cake\Http\Response|null|void
+     * @return Response|null|void
      */
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+
         $this->Auth->allow([
             'login'
         ]);
         $this->autoRender = false;
-
         $this->model = $this->Users;
     }
 
     /**
-     * @return \Cake\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -75,7 +78,7 @@ class UsersController extends AppController
     }
 
     /**
-     * @return \Cake\Http\Response
+     * @return Response
      */
     public function admins()
     {
@@ -108,7 +111,7 @@ class UsersController extends AppController
 
     /**
      * @param $slug
-     * @return \Cake\Http\Response
+     * @return Response
      */
     public function view($slug)
     {
@@ -131,7 +134,7 @@ class UsersController extends AppController
     }
 
     /**
-     * @return \Cake\Http\Response
+     * @return Response
      */
     public function add()
     {
@@ -182,7 +185,7 @@ class UsersController extends AppController
 
     /**
      * @param $slug
-     * @return \Cake\Http\Response
+     * @return Response
      */
     public function edit($slug)
     {
@@ -234,7 +237,7 @@ class UsersController extends AppController
     }
 
     /**
-     * @return \Cake\Http\Response
+     * @return Response
      */
     public function login()
     {
@@ -244,8 +247,8 @@ class UsersController extends AppController
                 $this->Auth->setUser($user);
                 $response = [
                     'status' => true,
-                    'title' => _('Authentication Success'),
-                    'message' => _('login successful, redirecting to dashboard.')
+                    //'title' => _('Authentication Success'),
+                    //'message' => _('login successful, redirecting to dashboard.')
                 ];
 
                 $this->log(
@@ -265,7 +268,7 @@ class UsersController extends AppController
     }
 
     /**
-     * @return \Cake\Http\Response
+     * @return Response
      */
     public function changePassword()
     {
@@ -299,7 +302,7 @@ class UsersController extends AppController
 
     /**
      * @param $id
-     * @return \Cake\Http\Response
+     * @return Response
      */
     public function delete($id)
     {
@@ -318,7 +321,7 @@ class UsersController extends AppController
                     'message' => _('The user could not be deleted. Please, try again.')
                 ];
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->_throw([
                 'status' => false,
                 'title' => _('The user can not been deleted.'),

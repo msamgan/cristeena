@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Model\Entity;
 
-use Cake\ORM\Entity;
 use App\Traits\Users\Getters;
 use App\Traits\Users\Setters;
+use Cake\I18n\FrozenTime;
+use Cake\ORM\Entity;
 
 /**
  * User Entity
@@ -14,9 +16,8 @@ use App\Traits\Users\Setters;
  * @property string $slug
  * @property string $email
  * @property string $password
- * @property \Cake\I18n\FrozenTime $created
+ * @property FrozenTime $created
  *
- * @property \App\Model\Entity\Role $role
  */
 class User extends Entity
 {

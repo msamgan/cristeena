@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Traits\Users;
 
 use Cake\Auth\DefaultPasswordHasher;
@@ -7,7 +8,8 @@ use Cake\Auth\DefaultPasswordHasher;
  * Trait Setters
  * @package App\Traits\Users
  */
-trait Setters {
+trait Setters
+{
     /**
      * @param $password
      * @return bool|string
